@@ -39,7 +39,27 @@ footer {
 	background-color: lightseagreen;
 }
 
+#start-screen {
+	flex-direction: column;
+	gap: 1rem;
+}
+
+#start-btn {
+	padding: 10px 20px;
+	border: none;
+	background-color: green;
+	color: white;
+	border-radius: 4px;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+#start-btn:hover {
+	background-color: hsl(120, 100%, 20%);
+}
+
 #panel {
+	display: none;
 	overflow: hidden;
 	width: 80%;
 	height: 80%;
@@ -57,11 +77,6 @@ footer {
 	color: #fff;
 }
 
-/* #ptop .elem {
-	display: flex;
-	gap: 1rem;
-} */
-
 #ptop .box {
 	display: flex;
 	justify-content: center;
@@ -72,10 +87,8 @@ footer {
 #pbottom {
 	display: flex;
 	flex-wrap: wrap;
-	/* justify-content: center; */
 	align-items: center;
 	gap: 0.5rem;
-	/* background-color: greenyellow; */
 	width: 100%;
 	height: calc(100% - 100px);
 	padding: 1.25rem;

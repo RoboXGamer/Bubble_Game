@@ -1,19 +1,15 @@
-let timer = 60;
-let score = 0;
-let hitval = 1;
+function startGame() {
+	// Hide start screen
+	document.getElementById("start-screen").style.display = "none";
 
-document.querySelector("#pbottom").addEventListener("click", function (e) {
-	let bubbleElHit = e.target;
-	if (Number(bubbleElHit.textContent) === hitval) {
-		// console.log("Correct Hit Hua");
+	// Show game
+	document.getElementById("panel").style.display = "block";
 
-		increaseScore();
-		getnewHit();
-		makeBubble();
-	} else {
-		// console.log("Hit nahi hua");
-	}
-});
+	// Start bubble generation and timer
+	makeBubble();
+	runTimer();
+	getnewHit();
+}
 
 function makeBubble() {
 	const bubbleCount = 50;
@@ -77,6 +73,26 @@ function increaseScore() {
 	document.querySelector("#scoreval").textContent = score;
 }
 
-makeBubble();
-runTimer();
-getnewHit();
+// Code Starts from here
+
+let timer = 60;
+let score = 0;
+let hitval = 1;
+
+// Hit Detection logic
+document.querySelector("#pbottom").addEventListener("click", function (e) {
+	let bubbleElHit = e.target;
+	if (Number(bubbleElHit.textContent) === hitval) {
+		// console.log("Correct Hit Hua");
+
+		increaseScore();
+		getnewHit();
+		makeBubble();
+	} else {
+		// console.log("Hit nahi hua");
+	}
+});
+
+const startBtn = document.getElementById("start-btn");
+
+startBtn.addEventListener("click", startGame);
