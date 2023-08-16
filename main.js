@@ -11,6 +11,24 @@ function startGame() {
 	getnewHit();
 }
 
+function replayGame() {
+	// Reset timer and score
+	timer = 2;
+	score = 0;
+	hitval = 1;
+
+	// Update UI
+	document.getElementById("timerval").textContent = timer;
+	document.getElementById("scoreval").textContent = score;
+
+	// Remove end screen
+	document.getElementById("Ending").remove();
+
+	makeBubble();
+	runTimer();
+	getnewHit();
+}
+
 function makeBubble() {
 	const bubbleCount = 50;
 
@@ -57,8 +75,13 @@ function runTimer() {
       <div id="Ending" style='margin:auto'>
         <h1>Game Ended</h1>
         <p style='font-size:2rem;'>Final Score: ${score}</p>
+				<button id="replay-btn">Play Again</button>
       </div>
       `;
+
+			const replayBtn = document.getElementById("replay-btn");
+
+			replayBtn.addEventListener("click", replayGame);
 		}
 	}, 1000);
 }
@@ -75,7 +98,7 @@ function increaseScore() {
 
 // Code Starts from here
 
-let timer = 60;
+let timer = 2;
 let score = 0;
 let hitval = 1;
 
