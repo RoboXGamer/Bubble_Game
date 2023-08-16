@@ -13,7 +13,7 @@ function startGame() {
 
 function replayGame() {
 	// Reset timer and score
-	timer = 2;
+	timer = timeInput.value;
 	score = 0;
 	hitval = 1;
 
@@ -24,9 +24,8 @@ function replayGame() {
 	// Remove end screen
 	document.getElementById("Ending").remove();
 
-	makeBubble();
-	runTimer();
-	getnewHit();
+	document.getElementById("panel").style.display = "none";
+	document.getElementById("start-screen").style.display = "flex";
 }
 
 function makeBubble() {
@@ -119,3 +118,23 @@ document.querySelector("#pbottom").addEventListener("click", function (e) {
 const startBtn = document.getElementById("start-btn");
 
 startBtn.addEventListener("click", startGame);
+
+// Settings Logic
+const settingsBtn = document.getElementById("settings-btn");
+const settings = document.getElementById("settings");
+
+// Toggle settings sidebar
+settingsBtn.addEventListener("click", () => {
+	settings.classList.toggle("open");
+});
+
+// Save timer value
+const saveBtn = document.getElementById("save-btn");
+const timeInput = document.getElementById("time-input");
+
+saveBtn.addEventListener("click", () => {
+	timer = timeInput.value;
+	settings.classList.remove("open");
+	// Update UI
+	document.getElementById("timerval").textContent = timer;
+});
